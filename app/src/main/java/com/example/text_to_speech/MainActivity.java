@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mButtonSpeak = findViewById(R.id.button_speak);
-        mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+        mTTS = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
                 if(status == TextToSpeech.SUCCESS) {
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         }
         mTTS.setPitch(pitch);
         mTTS.setSpeechRate(speed);
-        mTTS.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+        int speech = mTTS.speak(text, TextToSpeech.QUEUE_FLUSH, null);
     }
 
     @Override
